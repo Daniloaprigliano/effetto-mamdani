@@ -111,8 +111,8 @@
       transition: opacity .2s;
     }
     .logo-link:hover { opacity: .8; }
-    .logo-hey       { height: 64px; object-fit: contain; }
-    .logo-barricata { height: 42px; object-fit: contain; }
+    .logo-hey       { height: 68px; object-fit: contain; }
+    .logo-barricata { height: 46px; object-fit: contain; }
 
     /* ── Testo hero ── */
     .hero-text {
@@ -437,8 +437,8 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      gap: 3rem;
-      margin-bottom: 2rem;
+      gap: 3.5rem;
+      margin-bottom: 2.5rem;
       flex-wrap: wrap;
     }
     .footer-logos a {
@@ -448,8 +448,8 @@
       transition: opacity .2s;
     }
     .footer-logos a:hover { opacity: .75; }
-    .logo-footer-hey      { height: 64px; object-fit: contain; }
-    .logo-footer-barricata { height: 42px; object-fit: contain; }
+    .logo-footer-hey      { height: 72px; object-fit: contain; }
+    .logo-footer-barricata { height: 50px; object-fit: contain; }
     .footer-links {
       display: flex;
       justify-content: center;
@@ -486,8 +486,10 @@
     ═══════════════════════════════════════ */
     @media (min-width: 600px) {
       :root { --pad: 2rem; }
-      .logo-hey       { height: 70px; }
-      .logo-barricata { height: 46px; }
+      .logo-hey              { height: 74px; }
+      .logo-barricata        { height: 50px; }
+      .logo-footer-hey       { height: 80px; }
+      .logo-footer-barricata { height: 58px; }
       .hero-title .name { font-size: clamp(5rem, 18vw, 7.5rem); }
       .speakers-grid { grid-template-columns: repeat(2, 1fr); }
       .speaker-card  { padding: 2.2rem 2rem; }
@@ -541,8 +543,10 @@
         justify-content: center;
         padding: 2rem 3rem 5rem;
       }
-      .logo-hey       { height: 80px; }
-      .logo-barricata { height: 54px; }
+      .logo-hey              { height: 86px; }
+      .logo-barricata        { height: 58px; }
+      .logo-footer-hey       { height: 92px; }
+      .logo-footer-barricata { height: 66px; }
 
       .section-perche   { padding: 6.5rem 0 7.5rem; }
       .section-speakers { padding-top: 6.5rem; }
@@ -750,11 +754,13 @@
           Analista di intelligence e osservatore di geopolitica.
           Scrive per <a href="https://glistatigenerali.com" target="_blank" rel="noopener"><em>Gli Stati Generali</em></a>
           e <a href="https://www.agendadigitale.eu" target="_blank" rel="noopener"><em>Agenda Digitale</em></a>.
-          Pubblica la newsletter <em>È un momentaccio</em>.
+          Pubblica la newsletter
+          <a href="https://unmomentaccio.substack.com/" target="_blank" rel="noopener"><em>È un momentaccio</em></a>.
           Membro attivo del
           <a href="https://circolocaldara.it" target="_blank" rel="noopener">Circolo Caldara</a>.
         </p>
         <div class="speaker-links">
+          <a href="https://unmomentaccio.substack.com/" target="_blank" rel="noopener" class="pill">↗ È un momentaccio</a>
           <a href="https://glistatigenerali.com" target="_blank" rel="noopener" class="pill">↗ Gli Stati Generali</a>
         </div>
       </div>
@@ -772,6 +778,7 @@
           presso il Circolo Caldara.
         </p>
         <div class="speaker-links">
+          <a href="https://daniloaprigliano.substack.com/" target="_blank" rel="noopener" class="pill">↗ Substack</a>
           <a href="https://heymilano.it" target="_blank" rel="noopener" class="pill">↗ Hey Milano</a>
         </div>
       </div>
