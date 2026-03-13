@@ -7,8 +7,8 @@
   <meta name="description" content="Mercoledì 18 marzo 2026, ore 18:15 – Circolo Caldara, Sala el Salvadanée, Milano">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <!-- Bogart ≈ Cormorant Garamond | Nourd Bold ≈ Barlow Condensed | Glacial Indifference ≈ Josefin Sans | Arimo -->
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600;1,700&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Arimo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+  <!-- Bogart ≈ Playfair Display | Nourd Bold ≈ Barlow Condensed | Glacial Indifference ≈ Josefin Sans | Arimo -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;1,400;1,600;1,700;1,800&family=Josefin+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Barlow+Condensed:wght@300;400;500;600;700;800&family=Arimo:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
   <style>
     /* ── Reset ── */
@@ -27,7 +27,7 @@
       --white-dim:      rgba(255,255,255,0.75);
       --white-faint:    rgba(255,255,255,0.45);
 
-      --f-display:   'Cormorant Garamond', Georgia, serif;
+      --f-display:   'Playfair Display', Georgia, serif;
       --f-condensed: 'Barlow Condensed', 'Arial Narrow', sans-serif;
       --f-sans:      'Josefin Sans', 'Futura', sans-serif;
       --f-body:      'Arimo', Arial, sans-serif;
@@ -381,6 +381,8 @@
       .section-perche, .section-speakers,
       .section-modera, .section-venue { padding: 4rem 0; }
       .section-speakers { padding-bottom: 0; }
+      .modera-wrap { grid-template-columns: 1fr !important; }
+      .modera-wrap > div:last-child { border-left: none !important; padding-left: 0 !important; border-top: 1px solid rgba(255,255,255,.1); padding-top: 2rem; }
     }
     @media (max-width: 520px) {
       .hero-top-center { display: none; }
@@ -397,7 +399,7 @@
 <section class="hero">
 
   <header class="hero-top">
-    <img src="heymilano-logo.png"
+    <img src="heymilano-logo-bianco.png"
          alt="hey Milano dove andiamo?"
          class="logo-hey">
 
@@ -426,10 +428,6 @@
         <span class="sub">Un socialista a New York</span>
       </h1>
 
-      <div class="hero-intro">
-        <p class="intro-label">Introduce</p>
-        <p class="intro-name">Danilo Aprigliano</p>
-      </div>
 
     </div>
 
@@ -528,15 +526,27 @@
   </div>
 </section>
 
-<!-- ══════════ MODERA ══════════ -->
+<!-- ══════════ MODERA / INTRODUCE ══════════ -->
 <section class="section-modera">
   <div class="container-wide">
-    <div class="modera-wrap">
-      <p class="eyebrow">Modera</p>
-      <p class="speaker-name" style="font-size:1.6rem;">Giacomo D'Alfonso</p>
-      <p class="speaker-role" style="margin-top:.4rem;">
-        Analista di intelligence e osservatore di geopolitica.
-      </p>
+    <div class="modera-wrap" style="display:grid; grid-template-columns:1fr 1fr; gap:2rem 4rem;">
+
+      <div>
+        <p class="eyebrow">Modera</p>
+        <p class="speaker-name" style="font-size:1.6rem;">Giacomo D'Alfonso</p>
+        <p class="speaker-role" style="margin-top:.4rem;">
+          Analista di intelligence e osservatore di geopolitica.
+        </p>
+      </div>
+
+      <div style="border-left:1px solid rgba(255,255,255,.1); padding-left:3rem;">
+        <p class="eyebrow">Introduce</p>
+        <p class="speaker-name" style="font-size:1.6rem;">Danilo Aprigliano</p>
+        <p class="speaker-role" style="margin-top:.4rem;">
+          Insegnante, storico, co-fondatore di Hey Milano.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
@@ -588,7 +598,7 @@
 <!-- ══════════ FOOTER ══════════ -->
 <footer class="footer">
   <div class="footer-logos">
-    <img src="heymilano-logo.png" alt="hey Milano dove andiamo?">
+    <img src="heymilano-logo-bianco.png" alt="hey Milano dove andiamo?">
     <img src="barricata-logo.png" alt="Barricata">
   </div>
   <nav class="footer-links">
