@@ -101,8 +101,9 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 1.4rem var(--pad);
-      gap: 1rem;
+      flex-wrap: wrap;
+      padding: 1.8rem var(--pad);
+      gap: 1.2rem;
     }
     .logo-link {
       display: inline-flex;
@@ -112,8 +113,8 @@
       transition: opacity .2s;
     }
     .logo-link:hover { opacity: .8; }
-    .logo-hey       { height: 68px; object-fit: contain; }
-    .logo-barricata { height: 46px; object-fit: contain; }
+    .logo-hey       { height: 90px;  max-width: 220px; object-fit: contain; }
+    .logo-barricata { height: 66px;  max-width: 180px; object-fit: contain; }
 
     /* ── Testo hero ── */
     .hero-text {
@@ -487,8 +488,8 @@
     ═══════════════════════════════════════ */
     @media (min-width: 600px) {
       :root { --pad: 2rem; }
-      .logo-hey              { height: 74px; }
-      .logo-barricata        { height: 50px; }
+      .logo-hey              { height: 104px; }
+      .logo-barricata        { height: 76px; }
       .logo-footer-hey       { height: 80px; }
       .logo-footer-barricata { height: 58px; }
       .hero-title .name { font-size: clamp(5rem, 18vw, 7.5rem); }
@@ -544,8 +545,8 @@
         justify-content: center;
         padding: 2rem 3rem 5rem;
       }
-      .logo-hey              { height: 86px; }
-      .logo-barricata        { height: 58px; }
+      .logo-hey              { height: 120px; }
+      .logo-barricata        { height: 88px; }
       .logo-footer-hey       { height: 92px; }
       .logo-footer-barricata { height: 66px; }
 
