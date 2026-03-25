@@ -559,6 +559,122 @@
     }
     .footer-credits a { color: inherit; text-decoration: underline; text-underline-offset: 3px; }
 
+    /* ═══════════════════════
+       GALLERY + LIGHTBOX
+    ═══════════════════════ */
+    .section-gallery { background: var(--dark); padding: 4.5rem 0 5rem; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .4rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      aspect-ratio: 4/3;
+      cursor: pointer;
+      background: var(--dark-2);
+    }
+    .gallery-item.portrait { aspect-ratio: 3/4; }
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .38s ease, filter .38s ease;
+      filter: brightness(.92);
+    }
+    .gallery-item:hover img {
+      transform: scale(1.05);
+      filter: brightness(1.05);
+    }
+    .gallery-item::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0,0);
+      transition: background .25s;
+      pointer-events: none;
+    }
+    .gallery-item:hover::after { background: rgba(216,120,4,.1); }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 9000;
+      background: rgba(0,0,0,.94);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox-img-wrap {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      max-width: 90vw;
+      max-height: 90vh;
+    }
+    .lightbox-img-wrap img {
+      max-width: 90vw;
+      max-height: 90vh;
+      object-fit: contain;
+      border-radius: 4px;
+      box-shadow: 0 8px 64px rgba(0,0,0,.8);
+      display: block;
+    }
+    .lb-close {
+      position: fixed;
+      top: 1.2rem;
+      right: 1.4rem;
+      color: rgba(255,255,255,.7);
+      font-size: 2.2rem;
+      cursor: pointer;
+      background: none;
+      border: none;
+      line-height: 1;
+      padding: .4rem;
+      transition: color .2s;
+      z-index: 9001;
+    }
+    .lb-close:hover { color: var(--orange); }
+    .lb-prev, .lb-next {
+      position: fixed;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.12);
+      color: rgba(255,255,255,.75);
+      font-size: 1.8rem;
+      padding: .8rem 1.1rem;
+      cursor: pointer;
+      border-radius: 4px;
+      transition: background .2s, color .2s;
+      z-index: 9001;
+      line-height: 1;
+    }
+    .lb-prev { left: .8rem; }
+    .lb-next { right: .8rem; }
+    .lb-prev:hover, .lb-next:hover {
+      background: rgba(216,120,4,.25);
+      color: var(--orange);
+    }
+    .lb-counter {
+      position: fixed;
+      bottom: 1.2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      font-family: var(--f-condensed);
+      font-size: .8rem;
+      letter-spacing: .18em;
+      color: var(--faint);
+      z-index: 9001;
+    }
+
     /* ═══════════════════════════════════════
        TABLET+  (≥600 px)
     ═══════════════════════════════════════ */
@@ -578,6 +694,13 @@
       }
       .venue-grid { grid-template-columns: 1fr 1fr; align-items: start; }
       .venue-details-col { order: 0; }
+    }
+
+    @media (min-width: 600px) {
+      .gallery-grid { grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+    }
+    @media (min-width: 900px) {
+      .gallery-grid { grid-template-columns: repeat(4, 1fr); gap: .6rem; }
     }
 
     /* ═══════════════════════════════════════
@@ -626,6 +749,7 @@
       .logo-footer-barricata { height: 66px; }
 
       .section-video    { padding: 6.5rem 0 7rem; }
+      .section-gallery  { padding: 6.5rem 0 7rem; }
       .section-report   { padding: 6.5rem 0 7.5rem; }
       .section-perche   { padding: 6.5rem 0 7.5rem; }
       .section-speakers { padding-top: 6.5rem; }
@@ -713,6 +837,66 @@
     </p>
   </div>
 </section>
+
+<div class="divider"></div>
+
+<!-- ══════════════════════ GALLERY ══════════════════════ -->
+<section class="section-gallery">
+  <div class="container">
+    <p class="eyebrow">Le foto</p>
+    <h2 class="section-heading">La serata in immagini</h2>
+  </div>
+  <div class="container-wide">
+    <div class="gallery-grid" id="gallery">
+
+      <div class="gallery-item" data-index="0" onclick="openLb(0)">
+        <img src="images/foto-01.jpg" alt="La sala El Salvadanée – vista d'insieme, 18 marzo 2026" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="1" onclick="openLb(1)">
+        <img src="images/foto-02.jpg" alt="Il tavolo dei relatori con Sandro Brusco in collegamento da New York" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="2" onclick="openLb(2)">
+        <img src="images/foto-03.jpg" alt="Il panel durante la serata – Effetto Mamdani" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="3" onclick="openLb(3)">
+        <img src="images/foto-04.jpg" alt="Il panel con il pubblico in sala e il treppiede" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="4" onclick="openLb(4)">
+        <img src="images/foto-05.jpg" alt="Vista della sala con i banner di Effetto Mamdani" loading="lazy">
+      </div>
+      <div class="gallery-item portrait" data-index="5" onclick="openLb(5)">
+        <img src="images/foto-06.jpg" alt="I relatori al tavolo durante il dibattito" loading="lazy">
+      </div>
+      <div class="gallery-item portrait" data-index="6" onclick="openLb(6)">
+        <img src="images/foto-07.jpg" alt="Giacomo D'Alfonso e Luciana Grosso in discussione" loading="lazy">
+      </div>
+      <div class="gallery-item portrait" data-index="7" onclick="openLb(7)">
+        <img src="images/foto-08.jpg" alt="Luciana Grosso interviene con il libro Mamdani in mano" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="8" onclick="openLb(8)">
+        <img src="images/foto-09.jpg" alt="Foto di gruppo con il poster dell'evento" loading="lazy">
+      </div>
+      <div class="gallery-item" data-index="9" onclick="openLb(9)">
+        <img src="images/foto-10.jpg" alt="Relatori e organizzatori al termine della serata" loading="lazy">
+      </div>
+      <div class="gallery-item portrait" data-index="10" onclick="openLb(10)">
+        <img src="images/locandina.jpg" alt="La locandina di Effetto Mamdani – 18 marzo 2026" loading="lazy">
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lb" onclick="lbClickBg(event)" aria-modal="true" role="dialog">
+  <button class="lb-close" onclick="closeLb()" aria-label="Chiudi">×</button>
+  <button class="lb-prev" onclick="lbNav(-1,event)" aria-label="Precedente">‹</button>
+  <div class="lightbox-img-wrap">
+    <img id="lb-img" src="" alt="">
+  </div>
+  <button class="lb-next" onclick="lbNav(1,event)" aria-label="Successiva">›</button>
+  <span class="lb-counter" id="lb-counter"></span>
+</div>
 
 <div class="divider"></div>
 
@@ -1086,6 +1270,64 @@
     &nbsp;·&nbsp; Sala el Salvadanée &nbsp;·&nbsp; ingresso libero
   </p>
 </footer>
+
+
+<script>
+  /* ── Dati galleria ── */
+  const lbPhotos = [
+    { src: 'images/foto-01.jpg', alt: 'La sala El Salvadanée – vista d\'insieme, 18 marzo 2026' },
+    { src: 'images/foto-02.jpg', alt: 'Il tavolo dei relatori con Sandro Brusco in collegamento da New York' },
+    { src: 'images/foto-03.jpg', alt: 'Il panel durante la serata – Effetto Mamdani' },
+    { src: 'images/foto-04.jpg', alt: 'Il panel con il pubblico in sala e il treppiede' },
+    { src: 'images/foto-05.jpg', alt: 'Vista della sala con i banner di Effetto Mamdani' },
+    { src: 'images/foto-06.jpg', alt: 'I relatori al tavolo durante il dibattito' },
+    { src: 'images/foto-07.jpg', alt: 'Giacomo D\'Alfonso e Luciana Grosso in discussione' },
+    { src: 'images/foto-08.jpg', alt: 'Luciana Grosso interviene con il libro Mamdani in mano' },
+    { src: 'images/foto-09.jpg', alt: 'Foto di gruppo con il poster dell\'evento' },
+    { src: 'images/foto-10.jpg', alt: 'Relatori e organizzatori al termine della serata' },
+    { src: 'images/locandina.jpg', alt: 'La locandina di Effetto Mamdani – 18 marzo 2026' }
+  ];
+
+  let lbCurrent = 0;
+
+  function openLb(i) {
+    lbCurrent = i;
+    _lbUpdate();
+    document.getElementById('lb').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLb() {
+    document.getElementById('lb').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  function lbClickBg(e) {
+    if (e.target === document.getElementById('lb')) closeLb();
+  }
+
+  function lbNav(dir, e) {
+    if (e) e.stopPropagation();
+    lbCurrent = (lbCurrent + dir + lbPhotos.length) % lbPhotos.length;
+    _lbUpdate();
+  }
+
+  function _lbUpdate() {
+    const p = lbPhotos[lbCurrent];
+    const img = document.getElementById('lb-img');
+    img.src = p.src;
+    img.alt = p.alt;
+    document.getElementById('lb-counter').textContent =
+      (lbCurrent + 1) + ' / ' + lbPhotos.length;
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (!document.getElementById('lb').classList.contains('open')) return;
+    if (e.key === 'Escape')      closeLb();
+    if (e.key === 'ArrowLeft')   lbNav(-1, null);
+    if (e.key === 'ArrowRight')  lbNav(1,  null);
+  });
+</script>
 
 </body>
 </html>
